@@ -1,12 +1,17 @@
-import Head from 'next/head'
+import Hero from "../components/hero";
 
 export default function Home() {
   return (
-    <>
-      <Head>
-        <title>Lukáš Alois Zborník</title>
-      </Head>
-      <h1 style={{width: "100%", textAlign: "center", marginTop: "45vh"}}>Lukáš Alois Zborník</h1>
-    </>
-  )
+    <main
+      style={{
+        margin: 0,
+        padding: 0,
+        width: "100%",
+        height: "100vh",
+        background: "black",
+      }}
+    >
+      <Hero />
+    </main>
+  );
 }
