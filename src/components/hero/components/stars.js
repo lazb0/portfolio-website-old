@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
 import { TextureLoader } from "three";
+import { dampE } from "maath/easing";
 
 const Stars = ({ trackMouse }) => {
   const particles = useRef();
@@ -11,12 +12,19 @@ const Stars = ({ trackMouse }) => {
     Math.random() * 1000,
   ]);
 
-  useFrame((state) => {
+  useFrame((state, delta) => {
     const elapsedTime = state.clock.getElapsedTime();
 
-    particles.current.rotation.x = clientPosition[0] * 0.001;
-    particles.current.rotation.y =
-      -clientPosition[1] * 0.001 - elapsedTime / 100;
+    dampE(
+      particles.current.rotation,
+      [
+        clientPosition[0] * 0.001,
+        -clientPosition[1] * 0.001 - elapsedTime / 100,
+        0,
+      ],
+      0.1,
+      delta
+    );
   });
 
   useEffect(() => {
@@ -42,7 +50,7 @@ const Stars = ({ trackMouse }) => {
   return (
     <>
       <points ref={particles}>
-        <bufferGeometry attach="geometry">
+        <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
             count={numParticles}
@@ -51,12 +59,7 @@ const Stars = ({ trackMouse }) => {
             usage={THREE.DynamicDrawUsage}
           />
         </bufferGeometry>
-        <pointsMaterial
-          attach="material"
-          map={circleTexture}
-          size={0.01}
-          transparent
-        />
+        <pointsMaterial map={circleTexture} size={0.01} transparent />
       </points>
     </>
   );
