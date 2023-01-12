@@ -1,5 +1,6 @@
 import Background from "./components/background";
 import { createUseStyles } from "react-jss";
+import { useEffect, useState } from "react";
 
 const useStyles = createUseStyles({
   main: {
@@ -7,7 +8,8 @@ const useStyles = createUseStyles({
     display: "grid",
     placeContent: "center",
     height: "100vh",
-    color: "white",
+    color: "#ebdbb2",
+    background: "#1d2021",
   },
   textWrapper: {
     zIndex: 999,
@@ -26,14 +28,14 @@ const useStyles = createUseStyles({
     marginTop: 10,
     background: "transparent",
     border: "0",
-    color: "white",
+    color: "inherit",
     fontSize: "1.2rem",
     borderRadius: 5,
     cursor: "pointer",
     margin: "0 auto",
     "&:hover": {
-      background: "white",
-      color: "black",
+      background: "#ebdbb2",
+      color: "#1d2021",
     },
   },
 });
@@ -41,9 +43,22 @@ const useStyles = createUseStyles({
 const Hero = () => {
   const Css = useStyles();
 
+  const [trackingMouse, setTrackingMouse] = useState(false);
+
+  useEffect(() => console.log(trackingMouse), [trackingMouse]);
+
   return (
-    <div className={Css.main}>
-      <Background />
+    <div
+      className={Css.main}
+      id="home"
+      onMouseEnter={() => {
+        setTrackingMouse(true);
+      }}
+      onMouseLeave={() => {
+        setTrackingMouse(false);
+      }}
+    >
+      <Background trackingMouse={trackingMouse} />
       <div className={Css.textWrapper}>
         <h1>I&apos;m Lukáš Alois Zborník</h1>
         <h2>Software Developer & Linux Enthusiast</h2>

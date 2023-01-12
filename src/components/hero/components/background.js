@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
-import Box from "./stars";
+import Stars from "./stars";
 
-const Background = () => {
+const Background = ({ trackingMouse }) => {
   return (
     <Canvas
       style={{
@@ -11,7 +11,7 @@ const Background = () => {
         zIndex: 1,
       }}
     >
-      <Box />
+      <Stars trackMouse={trackingMouse} />
     </Canvas>
   );
 };

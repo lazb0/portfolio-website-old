@@ -3,7 +3,7 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
 import { TextureLoader } from "three";
 
-const Stars = () => {
+const Stars = ({ trackMouse }) => {
   const particles = useRef();
 
   const [clientPosition, setClientPosition] = useState([
@@ -15,21 +15,20 @@ const Stars = () => {
     const elapsedTime = state.clock.getElapsedTime();
 
     particles.current.rotation.y =
-      -clientPosition[1] * 0.25 * 0.5 * (elapsedTime * 0.00008);
+      (-clientPosition[1] - 50) * 0.25 * 0.5 * (elapsedTime * 0.00008);
     particles.current.rotation.x =
-      clientPosition[0] * 0.25 * 0.5 * (elapsedTime * 0.00008);
+      (clientPosition[0] + 50) * 0.25 * 0.5 * (elapsedTime * 0.00008);
   });
 
   useEffect(() => {
     const animateParticles = (e) => {
-      if (e.clientX <= 100 || e.clientY <= 100) return;
-
+      if (!trackMouse) return;
       setClientPosition([e.clientX, e.clientY]);
     };
 
     document.addEventListener("mousemove", animateParticles);
     return () => document.removeEventListener("mousemove", animateParticles);
-  }, []);
+  }, [trackMouse]);
 
   const circleTexture = useLoader(TextureLoader, "/circle.png");
 

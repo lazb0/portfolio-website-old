@@ -1,17 +1,15 @@
 import Hero from "../components/hero";
+import Navbar from "../components/navbar";
 
 export default function Home() {
   return (
     <main
       style={{
-        margin: 0,
-        padding: 0,
-        width: "100%",
-        height: "100vh",
-        background: "black",
+        height: "300vh",
       }}
     >
       <Hero />
+      <Navbar />
     </main>
   );
 }
