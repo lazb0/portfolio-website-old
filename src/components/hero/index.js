@@ -1,6 +1,6 @@
 import Background from "./components/background";
 import { createUseStyles } from "react-jss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const useStyles = createUseStyles({
   main: {
@@ -8,7 +8,7 @@ const useStyles = createUseStyles({
     display: "grid",
     placeContent: "center",
     height: "100vh",
-    color: "#ebdbb2",
+    color: "#fbf1c7",
     background: "#1d2021",
   },
   textWrapper: {
@@ -34,7 +34,7 @@ const useStyles = createUseStyles({
     cursor: "pointer",
     margin: "0 auto",
     "&:hover": {
-      background: "#ebdbb2",
+      background: "#fbf1c7",
       color: "#1d2021",
     },
   },
@@ -44,8 +44,6 @@ const Hero = () => {
   const Css = useStyles();
 
   const [trackingMouse, setTrackingMouse] = useState(false);
-
-  useEffect(() => console.log(trackingMouse), [trackingMouse]);
 
   return (
     <div

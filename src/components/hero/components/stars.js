@@ -14,10 +14,9 @@ const Stars = ({ trackMouse }) => {
   useFrame((state) => {
     const elapsedTime = state.clock.getElapsedTime();
 
+    particles.current.rotation.x = clientPosition[0] * 0.001;
     particles.current.rotation.y =
-      (-clientPosition[1] - 50) * 0.25 * 0.5 * (elapsedTime * 0.00008);
-    particles.current.rotation.x =
-      (clientPosition[0] + 50) * 0.25 * 0.5 * (elapsedTime * 0.00008);
+      -clientPosition[1] * 0.001 - elapsedTime / 100;
   });
 
   useEffect(() => {

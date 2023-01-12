@@ -9,7 +9,8 @@ const useStyles = createUseStyles({
     gap: "5vw",
     padding: "20px 0 20px 10vw",
     fontSize: "1.25rem",
-    background: "#b8bb26",
+    background: "#8ec07c",
+    color: "#282828",
     margin: 0,
   },
   button: {
@@ -56,7 +57,14 @@ const Navbar = () => {
   const _renderButtons = () => {
     return buttons.map((value, index) => (
       <li key={index}>
-        <Link to={value} smooth spy duration={200} className={Css.button}>
+        <Link
+          to={value}
+          smooth
+          spy
+          duration={200}
+          className={Css.button}
+          onClick={() => setTimeout(() => setNavbarShown(false), 500)}
+        >
           {value}
         </Link>
       </li>
@@ -70,6 +78,7 @@ const Navbar = () => {
           ? {
               position: "sticky",
               top: 0,
+              zIndex: 999,
               transition: "all 0.5s ease-in-out",
               transform: `translateY(${navbarShown ? "0" : "-100"}%)`,
               transitionDelay: navbarShown ? "0s" : "0.5s",
