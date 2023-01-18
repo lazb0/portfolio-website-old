@@ -1,6 +1,7 @@
 import Background from "./components/background";
 import { createUseStyles } from "react-jss";
 import { useState } from "react";
+import { Link } from "react-scroll";
 
 const useStyles = createUseStyles({
   main: {
@@ -60,7 +61,11 @@ const Hero = () => {
       <div className={Css.textWrapper}>
         <h1>I&apos;m Lukáš Alois Zborník</h1>
         <h2>Software Developer & Linux Enthusiast</h2>
-        <button className={Css.button}>ls ~/my-work/</button>
+        <button className={Css.button}>
+          <Link to="portfolio" smooth spy duration={200}>
+            ls ~/my-work/
+          </Link>
+        </button>
       </div>
     </div>
   );

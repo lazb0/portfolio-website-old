@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 import { Canvas } from "@react-three/fiber";
-import Cube from "./shapes/cube";
+import Torus from "./shapes/torus";
 
 const useStyles = createUseStyles({
   main: {
@@ -24,18 +24,13 @@ const useStyles = createUseStyles({
   },
 });
 
-const About = () => {
+const Timeline = () => {
   const Css = useStyles();
 
   return (
-    <section className={Css.main} id="about">
-      <div className={Css.shape}>
-        <Canvas>
-          <Cube />
-        </Canvas>
-      </div>
+    <section className={Css.main} id="timeline">
       <div className={Css.textWrapper}>
-        <h2 className={Css.header}>About me</h2>
+        <h2 className={Css.header}>My timeline</h2>
         <span>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim
@@ -48,8 +43,13 @@ const About = () => {
           euismod lacinia at quis risus sed vulputate odio.
         </span>
       </div>
+      <div className={Css.shape}>
+        <Canvas>
+          <Torus />
+        </Canvas>
+      </div>
     </section>
   );
 };
 
-export default About;
+export default Timeline;

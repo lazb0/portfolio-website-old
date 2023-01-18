@@ -17,7 +17,7 @@ const useStyles = createUseStyles({
     padding: "5px 10px",
     cursor: "pointer",
     fontWeight: "normal",
-    transition: "all",
+    width: 70.75,
     "&:hover": {
       fontWeight: 600,
     },
@@ -56,13 +56,12 @@ const Navbar = () => {
   const buttons = ["home", "about", "timeline", "portfolio", "contact"];
   const _renderButtons = () => {
     return buttons.map((value, index) => (
-      <li key={index}>
+      <li key={index} className={Css.button}>
         <Link
           to={value}
           smooth
           spy
           duration={200}
-          className={Css.button}
           onClick={() => setTimeout(() => setNavbarShown(false), 500)}
         >
           {value}

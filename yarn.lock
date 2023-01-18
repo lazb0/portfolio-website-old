@@ -2030,6 +2030,11 @@ node-addon-api@^5.0.0:
   resolved "https://repo.plus4u.net/operatorGate/repository/public-javascript/node-addon-api/-/node-addon-api-5.0.0.tgz#7d7e6f9ef89043befdb20c1989c905ebde18c501"
   integrity sha512-CvkDw2OEnme7ybCykJpVcKH+uAOLV2qLqiyla128dN9TkEWfrYmxG6C2boDe5KcNQqZF3orkqzGgOMvZ/JNekA==
 
+nodemailer@^6.9.0:
+  version "6.9.0"
+  resolved "https://repo.plus4u.net/operatorGate/repository/public-javascript/nodemailer/-/nodemailer-6.9.0.tgz#a17488ff470ff9edf1bb31d9ec23079bc94f7dd3"
+  integrity sha512-jFaCEGTeT3E/m/5R2MHWiyQH3pSARECRUDM+1hokOYc3lQAAG7ASuy+2jIsYVf+RVa9zePopSQwKNVFH8DKUpA==
+
 object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://repo.plus4u.net/operatorGate/repository/public-javascript/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
@@ -2288,6 +2293,11 @@ react-dom@18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-hook-form@^7.42.0:
+  version "7.42.0"
+  resolved "https://repo.plus4u.net/operatorGate/repository/public-javascript/react-hook-form/-/react-hook-form-7.42.0.tgz#91817cccd44e12af8fbf26c45e756634e76cbd23"
+  integrity sha512-XDEjSUZmT68FOSv2FaD3XlN1sa2HB9vIQ9SVKsogGrHUY43o2aANQDC9LgHa4zusqCMKLG3qitpTcEhpYWHBFw==
 
 react-icons@^4.7.1:
   version "4.7.1"
