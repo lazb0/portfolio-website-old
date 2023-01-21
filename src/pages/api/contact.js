@@ -52,23 +52,47 @@ export default async function handler(req, res) {
     },
   });
 
-  try {
-    transporter.verify();
-    transporter.sendMail({
-      from: process.env.EMAIL_SENDER,
-      to: authOptions.user,
-      subject: "New contact from " + dtoIn.name,
-      text: dtoIn.message,
+  await new Promise((res, rej) => {
+    transporter.verify((error, success) => {
+      error ? rej(error) : res(success);
     });
-    transporter.sendMail({
-      from: process.env.EMAIL_SENDER,
-      to: dtoIn.email,
-      subject: "Thank you for contacting me!",
-    });
-  } catch (e) {
+  }).catch((e) => {
     console.error(e);
     return res.status(500).json({ error: e });
-  }
+  });
+
+  await new Promise((res, rej) => {
+    transporter.sendMail(
+      {
+        from: process.env.EMAIL_SENDER,
+        to: authOptions.user,
+        subject: "New contact from " + dtoIn.name,
+        text: dtoIn.message,
+      },
+      (error, success) => {
+        error ? rej(error) : res(success);
+      }
+    );
+  }).catch((e) => {
+    console.error(e);
+    return res.status(500).json({ error: e });
+  });
+
+  await new Promise((res, rej) => {
+    transporter.sendMail(
+      {
+        from: process.env.EMAIL_SENDER,
+        to: dtoIn.email,
+        subject: "Thank you for contacting me!",
+      },
+      (error, success) => {
+        error ? rej(error) : res(success);
+      }
+    );
+  }).catch((e) => {
+    console.error(e);
+    return res.status(500).json({ error: e });
+  });
 
   transporter.close();
 
