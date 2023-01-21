@@ -2,6 +2,7 @@ import { createUseStyles } from "react-jss";
 import { useForm } from "react-hook-form";
 import { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
+import { BarLoader } from "react-spinners";
 
 const useStyles = createUseStyles({
   main: {
@@ -35,17 +36,24 @@ const useStyles = createUseStyles({
     "& > input:focus, & > textarea:focus": {
       outline: "none",
     },
+    "& > input:disabled, & > textarea:disabled": {
+      cursor: "wait",
+    },
   },
   submit: {
     color: "#8ec07c",
     padding: "4px 8px",
     cursor: "pointer",
     width: "50%",
-    alignSelf: "end",
-    display: "inline",
+    height: 31,
+    display: "grid",
+    placeItems: "center",
     border: 0,
     background: "#3c3836",
     fontSize: "1rem",
+    "&:disabled": {
+      cursor: "wait",
+    },
   },
   lastRow: {
     display: "flex",
@@ -68,7 +76,7 @@ const Contact = () => {
 
   const {
     register,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     handleSubmit,
     reset,
   } = useForm();
@@ -120,6 +128,7 @@ const Contact = () => {
             required: true,
           })}
           style={errors.name && { outline: "1px red solid" }}
+          disabled={isSubmitting}
         />
         <label htmlFor="email" hidden>
           Email
@@ -133,6 +142,7 @@ const Contact = () => {
             pattern: /[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}/,
           })}
           style={errors.email && { outline: "1px red solid" }}
+          disabled={isSubmitting}
         />
         <label htmlFor="message" hidden>
           Message
@@ -144,12 +154,15 @@ const Contact = () => {
           rows="5"
           {...register("message", { required: true })}
           style={errors.message && { outline: "1px red solid" }}
+          disabled={isSubmitting}
         />
         <div className={Css.lastRow}>
           <span className={Css.response}>
             {response.message ?? response.error}
           </span>
-          <input type="submit" value="Submit" className={Css.submit} />
+          <button type="submit" className={Css.submit} disabled={isSubmitting}>
+            {isSubmitting ? <BarLoader color="#8ec07c" height={5} /> : "Submit"}
+          </button>
         </div>
       </form>
     </section>

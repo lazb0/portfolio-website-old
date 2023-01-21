@@ -28,6 +28,7 @@
     "react-icons": "^4.7.1",
     "react-jss": "^10.9.2",
     "react-scroll": "^1.8.9",
+    "react-spinners": "^0.13.8",
     "sharp": "^0.31.3",
     "three": "^0.148.0"
   }
