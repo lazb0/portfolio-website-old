@@ -1,13 +1,28 @@
 import { google } from "googleapis";
 import nodemailer from "nodemailer";
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json();
 
   const dtoIn = req.body;
 
-  if (!(dtoIn.name && dtoIn.email && dtoIn.message))
+  if (!(dtoIn.name && dtoIn.email && dtoIn.message && dtoIn.token))
     return res.status(400).json({ error: "DtoIn not valid!" });
+
+  const reCAPTCHAres = await fetch(
+    "https://www.google.com/recaptcha/api/siteverify?secret=" +
+      process.env.RECAPTCHA_SECRET_KEY +
+      "&response=" +
+      dtoIn.token,
+    { method: "POST" }
+  );
+
+  const reCAPTCHAdata = await reCAPTCHAres.json();
+
+  if (reCAPTCHAdata.success === false)
+    return res.status(401).json({
+      error: "ReCAPTCHA token was not successfully verified by google!",
+    });
 
   const authOptions = {
     user: process.env.GOOGLE_USER,
@@ -57,5 +72,5 @@ export default function handler(req, res) {
 
   transporter.close();
 
-  res.status(200).json({ message: "Form successfully submitted!" });
+  res.status(200).json({ message: "I will be in touch soon!" });
 }

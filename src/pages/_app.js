@@ -13,6 +13,9 @@ const style = {
       margin: 0,
       padding: 0,
     },
+    ".grecaptcha-badge": {
+      visibility: "hidden",
+    },
   },
 };
 

@@ -47,7 +47,7 @@ const Hero = () => {
   const [trackingMouse, setTrackingMouse] = useState(false);
 
   return (
-    <div
+    <section
       className={Css.main}
       id="home"
       onMouseEnter={() => {
@@ -67,7 +67,7 @@ const Hero = () => {
           </Link>
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

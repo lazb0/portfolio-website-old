@@ -6,7 +6,7 @@ const Background = ({ trackingMouse }) => {
     <Canvas
       style={{
         height: "100vh",
-        width: "100vw",
+        width: "100%",
         position: "absolute",
         zIndex: 1,
       }}

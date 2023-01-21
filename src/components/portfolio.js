@@ -6,16 +6,16 @@ const useStyles = createUseStyles({
   main: {
     padding: "100px 10vw",
     display: "flex",
-    justifyContent: "space-around",
+    flexDirection: "column",
+    placeItems: "center",
   },
   textWrapper: {
     maxWidth: "25vw",
-    padding: "50px 0",
+    marginBottom: 16,
     alignSelf: "center",
   },
   header: {
     fontSize: "3rem",
-    textAlign: "center",
     margin: 0,
     color: "#8ec07c",
   },
@@ -101,12 +101,12 @@ const Portfolio = () => {
   };
 
   return (
-    <div className={Css.main} id="portfolio">
+    <section className={Css.main} id="portfolio">
       <div className={Css.textWrapper}>
         <h2 className={Css.header}>Portfolio</h2>
-        <div className={Css.grid}>{_renderItems()}</div>
       </div>
-    </div>
+      <div className={Css.grid}>{_renderItems()}</div>
+    </section>
   );
 };
 
