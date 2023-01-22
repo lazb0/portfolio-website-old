@@ -46,6 +46,13 @@ const Hero = () => {
 
   const [trackingMouse, setTrackingMouse] = useState(false);
 
+  const _registerGAEvent = () => {
+    window.gtag("event", "cta_clicked", {
+      event_label: "Call to action in hero has been used",
+      event_category: "engagement",
+    });
+  };
+
   return (
     <section
       className={Css.main}
@@ -61,7 +68,7 @@ const Hero = () => {
       <div className={Css.textWrapper}>
         <h1>I&apos;m Lukáš Alois Zborník</h1>
         <h2>Software Developer & Linux Enthusiast</h2>
-        <button className={Css.button}>
+        <button className={Css.button} onClick={() => _registerGAEvent()}>
           <Link to="portfolio" smooth spy duration={200}>
             ls ~/my-work/
           </Link>

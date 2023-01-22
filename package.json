@@ -12,15 +12,11 @@
     "@next/font": "13.1.1",
     "@react-three/drei": "^9.51.24",
     "@react-three/fiber": "^8.10.0",
-    "eslint": "^8.31.0",
-    "eslint-config-next": "13.1.1",
-    "eslint-prettier": "^0.0.0-empty",
     "googleapis": "^110.0.0",
     "jss-plugin-global": "^10.9.2",
     "maath": "^0.5.1",
     "next": "13.1.1",
     "nodemailer": "^6.9.0",
-    "prettier": "^2.8.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-google-recaptcha": "^2.1.0",
@@ -31,5 +27,12 @@
     "react-spinners": "^0.13.8",
     "sharp": "^0.31.3",
     "three": "^0.148.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint": "^8.31.0",
+    "eslint-config-next": "13.1.1",
+    "eslint-prettier": "^0.0.0-empty",
+    "prettier": "^2.8.2"
   }
 }

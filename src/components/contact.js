@@ -106,6 +106,11 @@ const Contact = () => {
 
     setResponse(resData);
     reset();
+
+    window.gtag("event", "form_submitted", {
+      event_label: "Contact form submitted",
+      event_category: "engagement",
+    });
   };
 
   return (

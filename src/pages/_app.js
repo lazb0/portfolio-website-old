@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import injectSheet from "react-jss";
 import "../styles/_app.css";
+import Script from "next/script";
+import MetaTags from "../components/meta-tags";
 
 const style = {
   "@global": {
@@ -27,7 +29,25 @@ const App = ({ Component, pageProps }) => {
     }
   }, []);
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <MetaTags />
+
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+      />
+      <Script strategy="afterInteractive" id="gtag-init">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+        `}
+      </Script>
+      <Component {...pageProps} />
+    </>
+  );
 };
 
 export default injectSheet(style)(App);
