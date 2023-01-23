@@ -82,11 +82,7 @@ const Contact = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log("submit");
-
     const token = await recaptchaRef.current.executeAsync();
-
-    console.log(token);
 
     if (!token) {
       console.error("Could not get token from ReCAPTCHA");
