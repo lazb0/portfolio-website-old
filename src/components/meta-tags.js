@@ -4,7 +4,10 @@ const MetaTags = () => {
   return (
     <Head>
       <title>Lukáš Alois Zborník - Software Developer | Portfolio</title>
-      <meta name="description" content="" />
+      <meta
+        name="description"
+        content="Software Developer and Linux Enthusiast, Lukáš Alois Zborník's portfolio. Explore my skills and past projects on my website."
+      />
       <meta
         name="keywords"
         content="Lukáš, Alois, Zborník, Software, Developer, Linux, Portfolio"
@@ -19,16 +22,22 @@ const MetaTags = () => {
         property="og:title"
         content="Lukáš Alois Zborník - Software Developer | Portfolio"
       />
-      <meta property="og:description" content="" />
-      <meta property="og:image" content="" />
+      <meta
+        property="og:description"
+        content="Software Developer and Linux Enthusiast, Lukáš Alois Zborník's portfolio. Explore my skills and past projects on my website."
+      />
+      <meta property="og:image" content="/meta/ogImage" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta
         name="twitter:title"
         content="Lukáš Alois Zborník - Software Developer | Portfolio"
       />
-      <meta name="twitter:description" content="" />
-      <meta name="twitter:image" content="" />
+      <meta
+        name="twitter:description"
+        content="Software Developer and Linux Enthusiast, Lukáš Alois Zborník's portfolio. Explore my skills and past projects on my website."
+      />
+      <meta name="twitter:image" content="/meta/twitterImage" />
     </Head>
   );
 };
