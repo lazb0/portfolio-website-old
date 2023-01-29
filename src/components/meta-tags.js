@@ -26,7 +26,9 @@ const MetaTags = () => {
         property="og:description"
         content="Software Developer and Linux Enthusiast, Lukáš Alois Zborník's portfolio. Explore my skills and past projects on my website."
       />
-      <meta property="og:image" content="/meta/ogImage" />
+      <meta property="og:image" content="https://lazbo.dev/meta/ogImage.png" />
+      <meta property="og:url" content="https://lazbo.dev/" />
+      <meta property="og:type" content="website" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta
@@ -37,7 +39,10 @@ const MetaTags = () => {
         name="twitter:description"
         content="Software Developer and Linux Enthusiast, Lukáš Alois Zborník's portfolio. Explore my skills and past projects on my website."
       />
-      <meta name="twitter:image" content="/meta/twitterImage" />
+      <meta
+        name="twitter:image"
+        content="https://lazbo.dev/meta/twitterImage.png"
+      />
     </Head>
   );
 };
