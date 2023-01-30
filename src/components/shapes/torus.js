@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import * as THREE from "three";
+import { DoubleSide } from "three";
 import { dampE } from "maath/easing";
 
 const Torus = () => {
@@ -16,7 +16,7 @@ const Torus = () => {
     <>
       <mesh ref={lines} scale={0.85}>
         <torusGeometry args={[2, 1, 8, 15]} />
-        <meshBasicMaterial size={0.1} wireframe side={THREE.DoubleSide} />
+        <meshBasicMaterial size={0.1} wireframe side={DoubleSide} />
       </mesh>
     </>
   );

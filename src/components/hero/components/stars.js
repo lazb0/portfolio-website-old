@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
-import * as THREE from "three";
-import { TextureLoader } from "three";
+import { TextureLoader, DynamicDrawUsage } from "three";
 import { dampE } from "maath/easing";
 
 const Stars = ({ trackMouse }) => {
@@ -22,7 +21,7 @@ const Stars = ({ trackMouse }) => {
         -clientPosition[1] * 0.001 - elapsedTime / 100,
         0,
       ],
-      0.1,
+      0.5,
       delta
     );
   });
@@ -39,7 +38,7 @@ const Stars = ({ trackMouse }) => {
 
   const circleTexture = useLoader(TextureLoader, "/circle.png");
 
-  const numParticles = 5000;
+  const numParticles = 1000;
 
   const posArray = new Float32Array(numParticles * 3);
 
@@ -56,7 +55,7 @@ const Stars = ({ trackMouse }) => {
             count={numParticles}
             array={posArray}
             itemSize={3}
-            usage={THREE.DynamicDrawUsage}
+            usage={DynamicDrawUsage}
           />
         </bufferGeometry>
         <pointsMaterial map={circleTexture} size={0.01} transparent />

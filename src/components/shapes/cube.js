@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import * as THREE from "three";
+import { DoubleSide } from "three";
 import { dampE } from "maath/easing";
 
 const Cube = () => {
@@ -16,7 +16,7 @@ const Cube = () => {
     <>
       <mesh ref={lines} scale={3}>
         <boxGeometry />
-        <meshBasicMaterial size={0.1} wireframe side={THREE.DoubleSide} />
+        <meshBasicMaterial size={0.1} wireframe side={DoubleSide} />
       </mesh>
     </>
   );
