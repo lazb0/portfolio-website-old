@@ -28,6 +28,7 @@ const Navbar = () => {
   const Css = useStyles();
 
   const [navbarSticky, setNavbarSticky] = useState(false);
+  const [mouseOver, setMouseOver] = useState(false);
   const [navbarShown, setNavbarShown] = useState(true);
   const [lastScrollPosition, setLastScrollPosition] = useState(0);
 
@@ -40,38 +41,36 @@ const Navbar = () => {
 
       setNavbarSticky(currPosition > viewportHeight);
 
-      setNavbarShown(currPosition < lastScrollPosition);
+      setNavbarShown(currPosition < lastScrollPosition || mouseOver);
 
       setLastScrollPosition(currPosition);
     };
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, [lastScrollPosition, navbarSticky]);
+  }, [lastScrollPosition, mouseOver, navbarSticky]);
 
   useEffect(() => {
     if (!navbarSticky) setNavbarShown(true);
   }, [navbarSticky]);
 
-  const buttons = ["home", "about", "timeline", "portfolio", "contact"];
+  const buttons = ["home", "about", "skills", "portfolio", "contact"];
   const _renderButtons = () => {
     return buttons.map((value, index) => (
-      <li key={index} className={Css.button}>
-        <Link
-          to={value}
-          smooth
-          spy
-          duration={200}
-          onClick={() => setTimeout(() => setNavbarShown(false), 500)}
-        >
-          {value}
-        </Link>
-      </li>
+      <Link to={value} smooth spy duration={200} key={index}>
+        <li className={Css.button}>{value}</li>
+      </Link>
     ));
   };
 
   return (
     <nav
+      onMouseEnter={() => {
+        setMouseOver(true);
+      }}
+      onMouseLeave={() => {
+        setMouseOver(false);
+      }}
       style={{
         ...(navbarSticky
           ? {

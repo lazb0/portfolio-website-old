@@ -68,11 +68,11 @@ const Hero = () => {
       <div className={Css.textWrapper}>
         <h1>I&apos;m Lukáš Alois Zborník</h1>
         <h2>Software Developer & Linux Enthusiast</h2>
-        <button className={Css.button} onClick={() => _registerGAEvent()}>
-          <Link to="portfolio" smooth spy duration={200}>
+        <Link to="portfolio" smooth spy duration={200}>
+          <button className={Css.button} onClick={() => _registerGAEvent()}>
             ls ~/my-work/
-          </Link>
-        </button>
+          </button>
+        </Link>
       </div>
     </section>
   );

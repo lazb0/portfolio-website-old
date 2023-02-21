@@ -1,7 +1,7 @@
 import Hero from "../components/hero";
 import Navbar from "../components/navbar";
 import About from "../components/about";
-import Timeline from "../components/timeline";
+import Skills from "../components/skills";
 import Portfolio from "../components/portfolio";
 import Contact from "../components/contact";
 import Footer from "../components/footer";
@@ -18,7 +18,7 @@ export default function Home() {
         <Hero />
         <Navbar />
         <About />
-        <Timeline />
+        <Skills />
         <Portfolio />
         <Contact />
         <Footer />
