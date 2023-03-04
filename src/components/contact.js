@@ -28,7 +28,8 @@ const useStyles = createUseStyles({
       color: "#fbf1c7",
       padding: "4px 8px",
       resize: "none",
-      width: "33vw",
+      maxWidth: 420,
+      width: "75vw",
     },
     "& > input::placeholder, & > textarea::placeholder": {
       fontFamily: "'Space Mono', monospace",

@@ -4,6 +4,7 @@ const MetaTags = () => {
   return (
     <Head>
       <title>Lukáš Alois Zborník - Software Developer | Portfolio</title>
+      <link rel="icon" type="image/png" href="/favicon.png" />
       <meta
         name="description"
         content="Software Developer and Linux Enthusiast, Lukáš Alois Zborník's portfolio. Explore my skills and past projects on my website."

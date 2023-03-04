@@ -3,17 +3,13 @@ import { Canvas } from "@react-three/fiber";
 import Torus from "./shapes/torus";
 import { Link } from "react-scroll";
 import * as NextLink from "next/link";
+import useScreenSize from "../hooks/use-screen-size";
 
 const useStyles = createUseStyles({
   main: {
     padding: "100px 10vw",
     display: "flex",
     justifyContent: "space-around",
-  },
-  textWrapper: {
-    maxWidth: "25vw",
-    padding: "50px 0",
-    alignSelf: "center",
   },
   header: {
     fontSize: "3rem",
@@ -51,9 +47,21 @@ const useStyles = createUseStyles({
 const Skills = () => {
   const Css = useStyles();
 
+  const { screenWidth } = useScreenSize();
+
   return (
     <section className={Css.main} id="skills">
-      <div className={Css.textWrapper}>
+      <div
+        style={{
+          padding: "50px 0",
+          alignSelf: "center",
+          ...(screenWidth < 800
+            ? {}
+            : screenWidth > 1200
+            ? { maxWidth: "25vw" }
+            : { maxWidth: "40vw" }),
+        }}
+      >
         <h2 className={Css.header}>Skills</h2>
         <p className={Css.text}>
           I know little bit of everything from Hardware to Software, from C to
@@ -73,11 +81,13 @@ const Skills = () => {
           <button className={Css.CVbutton}>Curriculum Vitae</button>
         </NextLink>
       </div>
-      <div className={Css.shape}>
-        <Canvas>
-          <Torus />
-        </Canvas>
-      </div>
+      {screenWidth > 1420 && (
+        <div className={Css.shape}>
+          <Canvas>
+            <Torus />
+          </Canvas>
+        </div>
+      )}
     </section>
   );
 };

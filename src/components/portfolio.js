@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
 import Image from "next/image";
 import { RiCodeSSlashFill, RiLayoutFill } from "react-icons/ri";
+import useScreenSize from "../hooks/use-screen-size";
 
 const useStyles = createUseStyles({
   main: {
@@ -15,13 +16,7 @@ const useStyles = createUseStyles({
     color: "#8ec07c",
     alignSelf: "center",
   },
-  grid: {
-    display: "grid",
-    gap: 16,
-    gridTemplateColumns: "repeat(3, 1fr)",
-    justifyContent: "center",
-    marginTop: 16,
-  },
+  grid: {},
   item: {
     aspectRatio: "1",
     position: "relative",
@@ -87,45 +82,12 @@ const items = [
     code: "https://github.com/lazb0/portfolio-website",
     site: "https://lazbo.dev",
   },
-  {
-    label: "This site",
-    imageSrc: "lazbo-dev",
-    description: "My portfolio website build mainly with Next JS and Three JS",
-    code: "https://github.com/lazb0/portfolio-website",
-    site: "https://lazbo.dev",
-  },
-  {
-    label: "This site",
-    imageSrc: "lazbo-dev",
-    description: "My portfolio website build mainly with Next JS and Three JS",
-    code: "https://github.com/lazb0/portfolio-website",
-    site: "https://lazbo.dev",
-  },
-  {
-    label: "This site",
-    imageSrc: "lazbo-dev",
-    description: "My portfolio website build mainly with Next JS and Three JS",
-    code: "https://github.com/lazb0/portfolio-website",
-    site: "https://lazbo.dev",
-  },
-  {
-    label: "This site",
-    imageSrc: "lazbo-dev",
-    description: "My portfolio website build mainly with Next JS and Three JS",
-    code: "https://github.com/lazb0/portfolio-website",
-    site: "https://lazbo.dev",
-  },
-  {
-    label: "This site",
-    imageSrc: "lazbo-dev",
-    description: "My portfolio website build mainly with Next JS and Three JS",
-    code: "https://github.com/lazb0/portfolio-website",
-    site: "https://lazbo.dev",
-  },
 ];
 
 const Portfolio = () => {
   const Css = useStyles();
+
+  const { screenWidth } = useScreenSize();
 
   const _renderItems = () => {
     return items.map((value, index) => (
@@ -160,7 +122,23 @@ const Portfolio = () => {
   return (
     <section className={Css.main} id="portfolio">
       <h2 className={Css.header}>Portfolio</h2>
-      <div className={Css.grid}>{_renderItems()}</div>
+      <div
+        style={{
+          display: "grid",
+          gap: 16,
+          justifyContent: "center",
+          marginTop: 16,
+          ...(screenWidth < 600
+            ? { gridTemplateColumns: "repeat(1, 1fr)" }
+            : screenWidth < 900
+            ? {
+                gridTemplateColumns: "repeat(1, 1fr)",
+              }
+            : { gridTemplateColumns: "repeat(1, 1fr)" }),
+        }}
+      >
+        {_renderItems()}
+      </div>
     </section>
   );
 };

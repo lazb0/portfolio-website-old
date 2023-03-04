@@ -23,6 +23,16 @@ const useStyles = createUseStyles({
       margin: 0,
       fontSize: "2rem",
     },
+    "@media only screen and (max-width: 720px)": {
+      "& > h1": {
+        fontSize: "3.5rem",
+        margin: 0,
+      },
+      "& > h2": {
+        margin: 0,
+        fontSize: "1.5rem",
+      },
+    },
   },
   button: {
     padding: "8px 20px",

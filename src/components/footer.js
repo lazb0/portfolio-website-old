@@ -31,6 +31,7 @@ const useStyles = createUseStyles({
   },
   recaptcha: {
     marginBottom: 4,
+    textAlign: "center",
   },
 });
 
