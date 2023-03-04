@@ -1,12 +1,28 @@
-import Head from 'next/head'
+import Hero from "../components/hero";
+import Navbar from "../components/navbar";
+import About from "../components/about";
+import Skills from "../components/skills";
+import Portfolio from "../components/portfolio";
+import Contact from "../components/contact";
+import Footer from "../components/footer";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Lukáš Alois Zborník</title>
-      </Head>
-      <h1 style={{width: "100%", textAlign: "center", marginTop: "45vh"}}>Lukáš Alois Zborník</h1>
+      <main
+        style={{
+          background: "#1d2021",
+          color: "#fbf1c7",
+        }}
+      >
+        <Hero />
+        <Navbar />
+        <About />
+        <Skills />
+        <Portfolio />
+        <Contact />
+        <Footer />
+      </main>
     </>
-  )
+  );
 }
